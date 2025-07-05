@@ -5,8 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Catálogo de Filmes e Séries</title>
         <link rel="stylesheet" href="estilo.css">
-        <script src="filmes.js"></script>
-        <script src="script.js" defer></script>
     </head>
 
     <body>
@@ -17,15 +15,27 @@
                 <div class="pagina-filme">
                     <div class="filme-informacoes">
                         <div class="informacoes-imagem"></div>
-                        <div class="informacoes-texto"></div>
+
+                        <div class="informacoes-texto">
+                            <div class="texto-titulo"></div>
+                            <div class="texto-genero"></div>
+                            <div class="texto-elenco"><span>Elenco: </span></div>
+                        </div>
+
                         <div class="informacoes-classificacao"></div>
                     </div>
 
-                    <div class="filme-texto"></div>
+                    <div class="filme-descricao"></div>
 
-                    <div class="filme-semelhantes"></div>
+                    <div class="filme-semelhantes">
+                        <h4>Títulos similares</h4>
+                        <div class="semelhantes-imagens"></div>
+                    </div>
                 </div>
             </div>
         </main>
+
+        <script src="filmes.js"></script>
+        <script src="script.js"></script>        
     </body>
 </html>

@@ -1,4 +1,4 @@
-body
+*
 {
     padding: 0px;
     margin: 0px;
@@ -21,17 +21,20 @@ img
 
 .pagina
 {
-    max-width: 1400px;
-    padding: 20px 200px;
+    display: flex;
+    flex-direction: column;
+    max-width: 1250px;
+    padding: 20px 150px;
     margin: 0px auto;
-    background: #88aabb;
+    background: #bbccdd;
 
 }
 
 .pagina h1
 {
-    margin-bottom: 50px;
-    font-size: 2.5rem;
+    margin-bottom: 100px;
+    font-size: 2.75rem;
+    font-weight: bold;
     text-align: center;
     color: #112233;
 
@@ -40,11 +43,47 @@ img
 .pagina-filmes
 {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+
+}
+
+.pagina-filme
+{
+    width: 550px;
+    padding: 10px;
+    background: #ffffff;
 
 }
 
 .filme-informacoes
 {
     display: flex;
+    gap: 8px;
+
+}
+
+.informacoes-imagem
+{
+    width: 210px;
+
+}
+
+.informacoes-texto
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.texto-titulo h2
+{
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 100;
+    text-align: center;
+    color: #112233;
 
 }

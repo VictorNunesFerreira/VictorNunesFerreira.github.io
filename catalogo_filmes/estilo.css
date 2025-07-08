@@ -52,7 +52,7 @@ img
 .pagina-filme
 {
     width: 550px;
-    padding: 10px;
+    padding: 8px;
     background: #ffffff;
 
 }
@@ -60,13 +60,15 @@ img
 .filme-informacoes
 {
     display: flex;
+    justify-content: space-between;
     gap: 8px;
 
 }
 
-.informacoes-imagem
+.informacoes-imagem img
 {
-    width: 210px;
+    max-width: 200px;
+    height: 120px;
 
 }
 
@@ -74,6 +76,7 @@ img
 {
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 5px;
 
 }
@@ -83,7 +86,71 @@ img
     margin-bottom: 10px;
     font-size: 1.5rem;
     font-weight: 100;
-    text-align: center;
+    color: #112233;
+
+}
+
+.informacoes-avaliacao
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+
+}
+
+.avaliacao-classificacao
+{
+    margin-top: 14px;
+
+}
+
+.avaliacao-classificacao span
+{
+    padding: 15px 20px;
+    font-size: 1.5rem;
+
+}
+
+.verde
+{
+    background: #aaddaa;
+
+}
+
+.amarelo
+{
+    background: #eedd88;
+
+}
+
+.vermelho
+{
+    background: #ff8888;
+
+}
+
+.avaliacao-nota
+{
+    margin-top: 17px;
+
+}
+
+.avaliacao-nota span
+{
+    font-size: 1rem;
+    color: #112233;
+
+}
+
+.filme-descricao
+{
+    margin: 15px;
+
+}
+
+.filme-descricao p
+{
+    font-size: 1rem;
     color: #112233;
 
 }

@@ -1,8 +1,8 @@
-filmes.forEach(function(filme)
+filmes.forEach(filme =>
 {
     criarFilme(filme);
 
-})
+});
 
 function criarFilme(filme)
 {
@@ -15,7 +15,7 @@ function criarFilme(filme)
     paginaFilme.appendChild(filmeInformacoes);
 
     const informacoesImagem = criarDiv("informacoes-imagem");
-    informacoesImagem.appendChild(criarImagem("img", "src", filme.figura));
+    informacoesImagem.appendChild(criarImagem(filme.figura));
     filmeInformacoes.appendChild(informacoesImagem);
 
     const informacoesTexto = criarDiv("informacoes-texto");
@@ -31,8 +31,23 @@ function criarFilme(filme)
     const textoElenco = criarDiv("texto-elenco");
     informacoesTexto.appendChild(textoElenco);
 
-    const informacoesClassificacao = criarDiv("informacoes-classificacao");
-    filmeInformacoes.appendChild(informacoesClassificacao);
+    const informacoesAvaliacao = criarDiv("informacoes-avaliacao");
+    filmeInformacoes.appendChild(informacoesAvaliacao);
+
+    const avaliacaoClassificacao = criarDiv("avaliacao-classificacao");
+    avaliacaoClassificacao.appendChild(criarClassificacao(filme.classificacao));
+    informacoesAvaliacao.appendChild(avaliacaoClassificacao);
+
+    const avaliacaoNota = criarDiv("avaliacao-nota");
+    avaliacaoNota.appendChild(criarNota(filme.opinioes));
+    informacoesAvaliacao.appendChild(avaliacaoNota);
+
+    const filmeDescricao = criarDiv("filme-descricao");
+    filmeDescricao.appendChild(criarElemento("p", filme.resumo));
+    paginaFilme.appendChild(filmeDescricao);
+
+    const filmeSemelhantes = criarDiv("filme-semelhantes");
+    paginaFilme.appendChild(filmeSemelhantes);
 
 }
 
@@ -44,18 +59,56 @@ function criarDiv(classe)
 
 }
 
-function criarImagem(html, atributo, valor)
+function criarImagem(valor)
 {
-    const figura = document.createElement(html);
-    figura[atributo] = valor;
+    const figura = document.createElement("img");
+    figura["src"] = valor;
     return figura;
 
 }
 
 function criarElemento(html, valor)
 {
-    const titulo = document.createElement(html);
-    titulo.innerText = valor;
-    return titulo;
+    const elemento = document.createElement(html);
+    elemento.innerText = valor;
+    return elemento;
+
+}
+
+function criarClassificacao(valor)
+{   
+    const classific = document.createElement("span");
+
+    if(valor == 0)
+        classific.innerText = "Livre";
+    else
+        classific.innerText = valor;
+
+    if(valor <= 14)
+        classific.classList.add("verde")
+    else if(valor > 14 && valor < 18)
+        classific.classList.add("amarelo")
+    else
+        classific.classList.add("vermelho")
+
+    return classific;
+
+}
+
+function criarNota(opinioes)
+{
+    let soma = 0;
+    let contador = 0;
+
+    opinioes.forEach(opiniao =>
+    {
+        soma = soma + opiniao.rating;
+        contador++;
+
+    });
+
+    const nota = document.createElement("span");
+    nota.innerText = `Nota: ${soma / contador}/5`;
+    return nota;
 
 }

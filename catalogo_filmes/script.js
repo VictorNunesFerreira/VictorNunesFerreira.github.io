@@ -26,9 +26,11 @@ function criarFilme(filme)
     informacoesTexto.appendChild(textoTitulo);
 
     const textoGenero = criarDiv("texto-genero");
+    textoGenero.appendChild(criarGeneros("h3", filme.generos));
     informacoesTexto.appendChild(textoGenero);
-
+    
     const textoElenco = criarDiv("texto-elenco");
+    textoElenco.appendChild(criarElenco("h3", filme.elenco));
     informacoesTexto.appendChild(textoElenco);
 
     const informacoesAvaliacao = criarDiv("informacoes-avaliacao");
@@ -47,7 +49,11 @@ function criarFilme(filme)
     paginaFilme.appendChild(filmeDescricao);
 
     const filmeSemelhantes = criarDiv("filme-semelhantes");
+    filmeSemelhantes.appendChild(criarElemento("h4", "Títulos similares"))
     paginaFilme.appendChild(filmeSemelhantes);
+
+    const semelhantesImagens = criarDiv("semelhantes-imagens");
+    filmeSemelhantes.appendChild(semelhantesImagens);
 
 }
 
@@ -71,6 +77,37 @@ function criarElemento(html, valor)
 {
     const elemento = document.createElement(html);
     elemento.innerText = valor;
+    return elemento;
+
+}
+
+function criarGeneros(html, valores)
+{
+    const elemento = document.createElement(html);
+    valores.forEach((valor, index) =>
+    {
+        if(index != valores.length - 1)
+            elemento.innerText = elemento.innerText + valor + ", ";
+        else
+            elemento.innerText = elemento.innerText + valor;
+
+    });
+    return elemento;
+
+}
+
+function criarElenco(html, valores)
+{
+    const elemento = document.createElement(html);
+    elemento.append(criarElemento("span", "Elenco: "));
+    valores.forEach((valor, index) =>
+    {
+        if(index != valores.length - 1)
+            elemento.innerText = elemento.innerText + valor + ", ";
+        else
+            elemento.innerText = elemento.innerText + valor;
+
+    });
     return elemento;
 
 }

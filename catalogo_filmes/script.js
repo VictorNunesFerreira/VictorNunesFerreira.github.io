@@ -48,12 +48,17 @@ function criarFilme(filme)
     filmeDescricao.appendChild(criarElemento("p", filme.resumo));
     paginaFilme.appendChild(filmeDescricao);
 
-    const filmeSemelhantes = criarDiv("filme-semelhantes");
-    filmeSemelhantes.appendChild(criarElemento("h4", "Títulos similares"))
-    paginaFilme.appendChild(filmeSemelhantes);
+    if(filme.titulosSemelhantes[0])
+    {
+        const filmeSemelhantes = criarDiv("filme-semelhantes");
+        filmeSemelhantes.appendChild(criarElemento("h4", "Títulos similares:"))
+        paginaFilme.appendChild(filmeSemelhantes);
 
-    const semelhantesImagens = criarDiv("semelhantes-imagens");
-    filmeSemelhantes.appendChild(semelhantesImagens);
+        const semelhantesImagens = criarDiv("semelhantes-imagens");
+        semelhantesImagens.appendChild(criarSemelhantes(filme.titulosSemelhantes));
+        filmeSemelhantes.appendChild(semelhantesImagens);
+
+    }
 
 }
 
@@ -76,7 +81,7 @@ function criarImagem(valor)
 function criarElemento(html, valor)
 {
     const elemento = document.createElement(html);
-    elemento.innerText = valor;
+    elemento.innerHTML = valor;
     return elemento;
 
 }
@@ -99,13 +104,13 @@ function criarGeneros(html, valores)
 function criarElenco(html, valores)
 {
     const elemento = document.createElement(html);
-    elemento.append(criarElemento("span", "Elenco: "));
+    elemento.appendChild(criarElemento("span", "Elenco: "));
     valores.forEach((valor, index) =>
     {
         if(index != valores.length - 1)
-            elemento.innerText = elemento.innerText + valor + ", ";
+            elemento.innerHTML = elemento.innerHTML + valor + ", ";
         else
-            elemento.innerText = elemento.innerText + valor;
+            elemento.innerHTML = elemento.innerHTML + valor;
 
     });
     return elemento;
@@ -147,5 +152,22 @@ function criarNota(opinioes)
     const nota = document.createElement("span");
     nota.innerText = `Nota: ${soma / contador}/5`;
     return nota;
+
+}
+
+function criarSemelhantes(semelhantes)
+{
+    const lista = document.createElement("ul");
+
+    semelhantes.forEach(semelhante =>
+    {
+        const correspondente = filmes.filter(filme => filme.id == semelhante);
+        const imgSemelhante = document.createElement("li");
+        imgSemelhante.appendChild(criarImagem(correspondente[0].figura));
+        lista.appendChild(imgSemelhante);
+        
+    });
+
+    return lista;
 
 }

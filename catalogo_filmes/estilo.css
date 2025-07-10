@@ -106,6 +106,12 @@ img
 
 }
 
+.texto-elenco span
+{
+    font-weight: bold;
+    
+}
+
 .informacoes-avaliacao
 {
     display: flex;
@@ -173,17 +179,37 @@ img
 
 .filme-semelhantes h4
 {
+    margin-bottom: 8px;
     font-size: 1.25rem;
     font-weight: 100;
     color: #112233;
 
 }
 
-@media(max-width: 900px)
+.semelhantes-imagens ul
+{
+    display: flex;
+    gap: 10px;
+
+}
+
+.semelhantes-imagens li img
+{
+    width: 120px;
+
+}
+
+@media(max-width: 1200px)
 {
     .pagina
     {
         padding: 20px 25px;
+
+    }
+
+    .pagina h1
+    {
+        margin-bottom: 50px;
 
     }
 
